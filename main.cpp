@@ -8,6 +8,7 @@ private:
 public:
 
     Counter() : count(0) {}
+    Counter(int c) : count(c) {}
 
     int getCount() {
         return count;
@@ -23,6 +24,12 @@ public:
         return temp;
     }
 
+    Counter operator ++ (int)
+    {
+        int temp = count++;
+        return Counter(temp);
+    }
+
 };
 
 int main() {
@@ -34,6 +41,10 @@ int main() {
     ++c1;
     c2 = ++c1;
 
+    cout << "c1 = " << c1.getCount() << endl;
+    cout << "c2 = " << c2.getCount() << endl;
+
+    c2 = c1++;
     cout << "c1 = " << c1.getCount() << endl;
     cout << "c2 = " << c2.getCount() << endl;
 }
