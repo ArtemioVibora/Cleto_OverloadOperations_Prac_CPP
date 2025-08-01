@@ -30,6 +30,12 @@ public:
         return Counter(temp);
     }
 
+    Counter operator - (Counter const& o) {
+        Counter temp;
+        temp.count = count - o.count;
+        return temp;
+    }
+
 };
 
 int main() {
@@ -43,8 +49,11 @@ int main() {
 
     cout << "c1 = " << c1.getCount() << endl;
     cout << "c2 = " << c2.getCount() << endl;
-
     c2 = c1++;
     cout << "c1 = " << c1.getCount() << endl;
     cout << "c2 = " << c2.getCount() << endl;
+
+    Counter c4;
+    c4 = c1 - c2;
+    cout << "c4 = " << c4.getCount();
 }
